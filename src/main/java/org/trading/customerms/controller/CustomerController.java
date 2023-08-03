@@ -12,7 +12,6 @@ import org.trading.customerms.service.CustomerService;
  * @project product-ms
  */
 @RestController
-@RequestMapping("/make")
 @RequiredArgsConstructor
 public class CustomerController {
 
@@ -28,13 +27,13 @@ public class CustomerController {
       return ResponseEntity.ok(customerService.getCustomerDtoById(id));
    }
 
-   @PutMapping("/decrease")
-   public boolean decreaseBalance(@RequestParam Long id, @RequestParam double amount) {
-      return customerService.decreaseBalance(id, amount);
+   @GetMapping("/decrease/{id}/{amount}")
+   public ResponseEntity<Boolean> decreaseBalance(@PathVariable Long id, @PathVariable double amount) {
+      return ResponseEntity.ok(customerService.decreaseBalance(id, amount));
    }
 
-   @PutMapping("/increase")
-   public boolean increaseBalance(@RequestParam Long id, @RequestParam double amount) {
-      return customerService.decreaseBalance(id, amount);
+   @GetMapping("/increase/{id}/{amount}")
+   public ResponseEntity<Boolean> increaseBalance(@PathVariable Long id, @PathVariable double amount) {
+      return ResponseEntity.ok(customerService.increaseBalance(id, amount));
    }
 }

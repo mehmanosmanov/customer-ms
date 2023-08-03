@@ -8,4 +8,6 @@ import org.trading.customerms.entity.Customer;
  * @project product-ms
  */
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
+
+
 }

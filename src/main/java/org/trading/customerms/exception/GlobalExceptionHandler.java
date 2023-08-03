@@ -21,14 +21,14 @@ public class GlobalExceptionHandler {
            NotFoundException.class,
            InsufficientBalance.class
    })
-   ResponseEntity<ErrorMessage> handleException(Exception ex) {
+   ResponseEntity<ErrorResponse> handleException(Exception ex) {
       log.info(ex.getMessage(), ex);
-      ErrorMessage errorMessage = new ErrorMessage();
-      errorMessage.setDate(LocalDateTime.now());
-      errorMessage.setStatus(getHttpStatus(ex));
-      errorMessage.setErrorCode(errorMessage.getStatus().value());
-      errorMessage.setErrorMessage(ex.getMessage());
-      return ResponseEntity.status(errorMessage.getStatus()).body(errorMessage);
+      ErrorResponse errorResponse = new ErrorResponse();
+      errorResponse.setDate(LocalDateTime.now());
+      errorResponse.setStatus(getHttpStatus(ex));
+      errorResponse.setErrorCode(errorResponse.getStatus().value());
+      errorResponse.setErrorMessage(ex.getMessage());
+      return ResponseEntity.status(errorResponse.getStatus()).body(errorResponse);
    }
 
    private HttpStatus getHttpStatus(Exception ex) {

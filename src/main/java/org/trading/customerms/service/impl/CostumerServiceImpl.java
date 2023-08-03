@@ -29,8 +29,10 @@ public class CostumerServiceImpl implements CustomerService {
       log.info("Creating a new customer");
       repository.save(mapper.dtoToEntity(request));
    }
+   public void updateCustomer(Long id, CustomerRequest request){
 
-   @Override
+   }
+
    public Customer getCustomerById(Long id) {
       log.info("Getting customer by id={}", id);
       return repository.findById(id).orElseThrow(
@@ -59,8 +61,7 @@ public class CostumerServiceImpl implements CustomerService {
    @Override
    public boolean increaseBalance(Long id, double amount) {
       log.info("Start transaction");
-      Customer customer = repository.findById(id).orElseThrow(
-              () -> new NotFoundException("Not found customer with such id=" + id));
+      Customer customer = getCustomerById(id);
       var balance = customer.getBalance() + amount;
       customer.setBalance(balance);
       repository.save(customer);

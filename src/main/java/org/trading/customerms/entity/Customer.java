@@ -20,7 +20,7 @@ public class Customer {
     private Long id;
 
     private String pinCode;
-    private String firstNAme;
+    private String firstName;
     private String lastName;
     private int age;
     private String address;

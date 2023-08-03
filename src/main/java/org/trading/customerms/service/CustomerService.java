@@ -12,7 +12,6 @@ import org.trading.customerms.entity.Customer;
 @Service
 public interface CustomerService {
     void createCostumer(CustomerRequest request);
-    Customer getCustomerById(Long id);
     CustomerResponse getCustomerDtoById(Long id);
 
 
